@@ -17,14 +17,11 @@ let isConnected = false;
 
 // Helper: set CORS headers manually so they are present even on crashes
 function setCorsHeaders(req, res) {
-  const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
-    .split(",")
-    .map((o) => o.trim())
-    .filter(Boolean);
-
   const origin = req.headers.origin;
-  if (!origin || allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin || "*");
+  if (origin) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else {
+    res.setHeader("Access-Control-Allow-Origin", "*");
   }
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
@@ -33,7 +30,7 @@ function setCorsHeaders(req, res) {
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Content-Type, Authorization"
+    "Content-Type, Authorization, X-Requested-With, Accept"
   );
 }
 

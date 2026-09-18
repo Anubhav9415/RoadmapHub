@@ -3,6 +3,10 @@
 const REFRESH_COOKIE_NAME = "refreshToken";
 const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 
+const isProduction =
+  process.env.NODE_ENV === "production" ||
+  (process.env.CLIENT_URL && !process.env.CLIENT_URL.includes("localhost"));
+
 /**
  * Attach the refresh token as a secure httpOnly cookie.
  * @param {import('express').Response} res
@@ -11,8 +15,8 @@ const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 const setRefreshCookie = (res, token) => {
   res.cookie(REFRESH_COOKIE_NAME, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
     maxAge: MAX_AGE_MS,
   });
 };
@@ -24,8 +28,8 @@ const setRefreshCookie = (res, token) => {
 const clearRefreshCookie = (res) => {
   res.cookie(REFRESH_COOKIE_NAME, "", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
     maxAge: 0,
   });
 };

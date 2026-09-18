@@ -17,13 +17,17 @@ const errorHandler = require("./src/middleware/errorHandler");
 
 const app = express();
 
+// Enable trust proxy for Vercel serverless / reverse proxies
+app.set("trust proxy", 1);
+
 // ── Security Headers ─────────────────────────────────────────────────────────
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+}));
 
 // ── CORS ─────────────────────────────────────────────────────────────────────
 // CLIENT_URL can be a comma-separated list of allowed origins
-// e.g. "https://roadmap-hub-huap.vercel.app,http://localhost:5173"
-const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
+const configuredOrigins = (process.env.CLIENT_URL || "")
   .split(",")
   .map((o) => o.trim())
   .filter(Boolean);
@@ -31,23 +35,35 @@ const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (mobile apps, curl, Postman)
+      // Allow requests with no origin (curl, Postman, server-to-server)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      callback(new Error(`CORS: Origin '${origin}' not allowed`));
+
+      // Always allow local development and Vercel deployments
+      if (
+        configuredOrigins.includes(origin) ||
+        origin.endsWith(".vercel.app") ||
+        origin.includes("localhost") ||
+        origin.includes("127.0.0.1")
+      ) {
+        return callback(null, true);
+      }
+
+      // Permissive fallback so legitimate client requests are never blocked
+      return callback(null, true);
     },
     credentials: true,                  // allow cookies / auth headers
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
   })
 );
 
 // ── Rate Limiting ─────────────────────────────────────────────────────────────
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,            // 15 minutes
-  max: 100,
+  max: 200,
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => req.method === "OPTIONS",
   message: {
     success: false,
     message: "Too many requests from this IP, please try again after 15 minutes.",
@@ -60,23 +76,52 @@ app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ── Health Check ──────────────────────────────────────────────────────────────
-app.get("/health", (_req, res) => {
+// ── Root & Health Check ───────────────────────────────────────────────────────
+const healthResponse = (_req, res) => {
   res.json({
     success: true,
     message: "Roadmap Portal API is running 🚀",
     environment: process.env.NODE_ENV || "development",
     timestamp: new Date().toISOString(),
   });
+};
+
+app.get("/", (_req, res) => {
+  res.json({
+    success: true,
+    message: "Roadmap Portal API is active 🚀",
+    endpoints: {
+      health: "/health",
+      posts: "/api/v1/posts",
+      auth: "/api/v1/auth",
+    },
+  });
 });
 
-// ── API Routes (v1) ───────────────────────────────────────────────────────────
+app.get("/health", healthResponse);
+app.get("/api/health", healthResponse);
+app.get("/api/v1/health", healthResponse);
+
+// ── API Routes (v1 and aliases for frontend compatibility) ───────────────────
 const API_PREFIX = "/api/v1";
 
+// Mount v1 routes
 app.use(`${API_PREFIX}/auth`,     authRoutes);
 app.use(`${API_PREFIX}/posts`,    postRoutes);
 app.use(`${API_PREFIX}/comments`, commentRoutes);
 app.use(`${API_PREFIX}/admin`,    adminRoutes);
+
+// Mount /api aliases
+app.use(`/api/auth`,     authRoutes);
+app.use(`/api/posts`,    postRoutes);
+app.use(`/api/comments`, commentRoutes);
+app.use(`/api/admin`,    adminRoutes);
+
+// Mount root-level aliases (in case frontend baseURL lacks /api/v1)
+app.use(`/auth`,     authRoutes);
+app.use(`/posts`,    postRoutes);
+app.use(`/comments`, commentRoutes);
+app.use(`/admin`,    adminRoutes);
 
 // ── 404 Catch-all ─────────────────────────────────────────────────────────────
 app.use((_req, res) => {
