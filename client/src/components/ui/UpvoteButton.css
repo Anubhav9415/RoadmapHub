@@ -1,0 +1,44 @@
+.upvote-btn {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            6px;
+  background:     none;
+  border:         1.5px solid var(--color-border, #d0d7de);
+  border-radius:  20px;
+  cursor:         pointer;
+  font-weight:    600;
+  transition:     all 0.15s ease;
+  color:          var(--color-text-secondary, #57606a);
+  padding:        6px 14px;
+}
+
+.upvote-btn:hover:not(:disabled) {
+  border-color: #6366f1;
+  color:        #6366f1;
+  background:   #f0f0ff;
+}
+
+.upvote-btn--active {
+  border-color: #6366f1 !important;
+  color:        #6366f1 !important;
+  background:   #eeefff !important;
+}
+
+.upvote-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.upvote-icon  { width: 16px; height: 16px; flex-shrink: 0; }
+.upvote-count { font-size: 14px; line-height: 1; }
+
+/* ── Horizontal (detail page) ─────────────────────────────────────────────── */
+.upvote-btn--horizontal { padding: 8px 20px; font-size: 15px; border-radius: 24px; }
+.upvote-btn--horizontal .upvote-icon { width: 18px; height: 18px; }
+.upvote-btn--horizontal .upvote-count { font-size: 16px; }
+
+/* ── Vertical (card) ──────────────────────────────────────────────────────── */
+.upvote-btn--vertical {
+  flex-direction: column;
+  gap:            2px;
+  padding:        8px 10px;
+  border-radius:  10px;
+}
+.upvote-btn--vertical .upvote-count { font-size: 16px; font-weight: 700; }

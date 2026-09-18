@@ -1,0 +1,234 @@
+.navbar-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-text-primary, #0f172a);
+}
+
+.brand-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0969da, #8250df);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.desktop-nav-links {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav-links {
+    display: flex;
+  }
+}
+
+.nav-link {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary, #64748b);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-text-primary, #0f172a);
+  background: #f1f5f9;
+}
+
+.nav-link.active {
+  color: #0969da;
+  background: #eff6ff;
+}
+
+.admin-nav-link {
+  color: #7e22ce;
+}
+
+.admin-nav-link.active {
+  background: #faf5ff;
+  color: #7e22ce;
+}
+
+.navbar-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-new-request {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0969da;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-new-request:hover {
+  background: #085cc1;
+}
+
+.user-profile-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0284c7, #6366f1);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-logout-link {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--color-text-secondary, #64748b);
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.btn-logout-link:hover {
+  color: #dc2626;
+  text-decoration: underline;
+}
+
+.auth-buttons-group {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .auth-buttons-group {
+    display: flex;
+  }
+}
+
+.btn-login-text {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary, #334155);
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.btn-login-text:hover {
+  color: #0969da;
+}
+
+.btn-signup-pill {
+  background: #f1f5f9;
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary, #1e293b);
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.btn-signup-pill:hover {
+  background: #e2e8f0;
+}
+
+.mobile-menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--color-text-primary, #334155);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+
+.mobile-nav-drawer {
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  padding: 12px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav-link {
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary, #334155);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.mobile-nav-link.active {
+  background: #eff6ff;
+  color: #0969da;
+}
+
+.mobile-auth-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}

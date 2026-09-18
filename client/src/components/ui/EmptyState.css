@@ -1,0 +1,49 @@
+.empty-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--color-bg, #ffffff);
+  border: 1px dashed var(--color-border, #d0d7de);
+  border-radius: 12px;
+  margin: 16px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.empty-state-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.empty-state-default-icon {
+  color: #64748b;
+}
+
+.empty-state-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-primary, #0f172a);
+  margin: 0 0 6px 0;
+}
+
+.empty-state-description {
+  font-size: 14px;
+  color: var(--color-text-secondary, #64748b);
+  margin: 0 0 16px 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.empty-state-action-btn {
+  margin-top: 4px;
+}

@@ -1,0 +1,31 @@
+.auth-modal-card {
+  max-width: 420px;
+}
+
+.auth-submit-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.auth-switch-prompt {
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-secondary, #64748b);
+  margin-top: 8px;
+}
+
+.auth-switch-link {
+  background: none;
+  border: none;
+  color: #0969da;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.auth-switch-link:hover {
+  text-decoration: underline;
+}

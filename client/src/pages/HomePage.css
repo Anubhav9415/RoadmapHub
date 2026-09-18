@@ -1,0 +1,118 @@
+.home-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 64px 20px;
+}
+
+.feed-hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-text-content {
+  flex: 1;
+  min-width: 260px;
+}
+
+.hero-heading {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-text-primary, #0f172a);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+}
+
+.hero-subheading {
+  font-size: 15px;
+  color: var(--color-text-secondary, #64748b);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hero-cta-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Feed Toolbar */
+.feed-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.feed-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.feed-search-input {
+  width: 100%;
+  padding: 8px 32px 8px 34px;
+  font-size: 13.5px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.feed-search-input:focus {
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.12);
+}
+
+.feed-filter-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.feed-select {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--color-text-primary, #334155);
+  outline: none;
+  cursor: pointer;
+}
+
+.feed-select:focus {
+  border-color: #0969da;
+}
+
+.feed-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feed-skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feed-error-card {
+  background: #ffffff;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 32px;
+  text-align: center;
+  color: #991b1b;
+}

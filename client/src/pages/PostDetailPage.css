@@ -1,0 +1,352 @@
+.post-detail-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 64px 16px;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-secondary, #57606a);
+  margin-bottom: 20px;
+}
+
+.breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-secondary, #57606a);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.breadcrumb-link:hover {
+  color: #0969da;
+}
+
+.breadcrumb-separator {
+  color: #8c959f;
+}
+
+.breadcrumb-current {
+  color: var(--color-text-primary, #24292f);
+  font-weight: 500;
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 860px) {
+  .post-detail-layout {
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+.post-main-column {
+  min-width: 0;
+}
+
+.post-card {
+  background: var(--color-bg, #ffffff);
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 8px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.post-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.post-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.post-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--color-border, #d0d7de);
+  background: #f6f8fa;
+  color: var(--color-text-primary, #24292f);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.action-btn:hover {
+  background: #f3f4f6;
+  border-color: #bbc0c7;
+}
+
+.action-btn--danger {
+  color: #cf222e;
+}
+
+.action-btn--danger:hover {
+  background: #ffebe9;
+  border-color: #ff8182;
+}
+
+.post-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-primary, #1f2328);
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-secondary, #57606a);
+  margin-bottom: 20px;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.author-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0969da, #8250df);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.author-name {
+  font-weight: 600;
+  color: var(--color-text-primary, #24292f);
+}
+
+.meta-dot {
+  color: #8c959f;
+}
+
+.post-upvote-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f6f8fa;
+  border: 1px solid var(--color-border, #e1e4e8);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 24px;
+}
+
+.upvote-hint {
+  font-size: 13px;
+  color: var(--color-text-secondary, #57606a);
+}
+
+.markdown-content {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-primary, #24292f);
+}
+
+.markdown-content p {
+  margin: 0 0 16px 0;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.markdown-content code {
+  background: #f6f8fa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.markdown-content pre {
+  background: #f6f8fa;
+  padding: 14px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+/* Edit form styles */
+.post-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary, #24292f);
+}
+
+.input-field,
+.select-field {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input-field:focus,
+.select-field:focus {
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+}
+
+.textarea-field {
+  resize: vertical;
+}
+
+.edit-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Sidebar Styles */
+.post-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-card {
+  background: var(--color-bg, #ffffff);
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary, #57606a);
+}
+
+.sidebar-vote-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.sidebar-vote-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-primary, #1f2328);
+}
+
+.sidebar-vote-text {
+  font-size: 13px;
+  color: var(--color-text-secondary, #57606a);
+}
+
+.sidebar-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-status-select-wrap {
+  margin-top: 4px;
+}
+
+.admin-select-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #7e22ce;
+  margin-bottom: 4px;
+}
+
+.admin-select {
+  width: 100%;
+  font-size: 13px;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--color-border, #e1e4e8);
+  margin: 16px 0;
+}
+
+.back-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #0969da;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.post-not-found-card {
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  margin: 40px auto;
+}

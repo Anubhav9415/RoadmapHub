@@ -1,0 +1,18 @@
+{
+  "name": "roadmap-portal",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -p \"[{name}]\" -n \"SERVER,CLIENT\" -c \"cyan.bold,magenta.bold\" \"npm run dev:mem -w server\" \"npm run dev -w client\"",
+    "dev:server": "npm run dev:mem -w server",
+    "dev:client": "npm run dev -w client",
+    "install:all": "npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
